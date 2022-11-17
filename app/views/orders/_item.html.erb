@@ -1,1 +1,27 @@
-<li><%=item%>, <%=item.product.image%>, Name:<%=item.product.name%>, Description:<%=item.product.description%>, Quantity:<%=item.quantity%>, Order ID:<%= orderid %>Order Email:<%= orderemail %> </li>
+<% product = Product.find(product) %>
+<tr>
+  <td>
+    <%= image_tag product.image.tiny.url %>
+  </td>
+  <td>
+    <h4><%= product.name %></h4>
+    <br>
+    <p><%= product.description %></p>
+  </td>
+  <td>
+  Email: <%= orderemail %>
+  </td>
+  <td>
+  <div>
+    Item Price: <%= humanized_money_with_symbol product.price %>
+    </div>
+  </td>
+  <td>
+    <div>
+    Quantity ordered: <%= quantity %>
+    </div>
+  </td>
+  <td>
+    Total Price: <%= humanized_money_with_symbol product.price * quantity %>
+  </td>
+</tr>
