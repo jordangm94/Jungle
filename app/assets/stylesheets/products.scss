@@ -42,6 +42,10 @@ main section.categories-show {
       box-shadow: rgba(0, 130, 29, 0.16) 0px 3px 6px, rgba(0, 130, 29, 0.23) 0px 3px 6px;
       // transition: opacity 300ms linear;
 
+      .sold-out-btn {
+        background-color: red;
+      }
+      
       &:hover {
         transition: all 150ms linear;
         background-color: rgba(0, 130, 29, 0.7);
