@@ -6,6 +6,11 @@
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
+    <ol>
+    <% @order_line_items.each do | order_line |%>
+      <%= render 'item', item: order_line, orderid: @order.id, orderemail: @order.email%>
+      <% end %>
+    </ol>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
