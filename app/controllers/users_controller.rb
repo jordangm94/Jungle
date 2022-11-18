@@ -14,9 +14,11 @@ class UsersController < ApplicationController
     end
   end
 
+  #User_params helps us ensure that information coming is clean and will not be malicious towards tables
   private
-  
+
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
+
 end
