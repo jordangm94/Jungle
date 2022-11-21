@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-# This model r spec file was instantly generated with the command rails generate rspec:model product
+# This model r spec file was instantly generated with the command 'rails generate rspec:model product'
 # The be_valid method tests if the given model instance's valid? method is true
 
 RSpec.describe Product, type: :model do

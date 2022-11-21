@@ -4,5 +4,7 @@
 class User < ApplicationRecord
   # This line of code gives our User model authentication methods via bcrypt
   has_secure_password
-  
+
+  validates :email, presence: true
+  validates :name, presence: true
 end
