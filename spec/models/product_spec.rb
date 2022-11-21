@@ -38,7 +38,6 @@ RSpec.describe Product, type: :model do
       expect(@product).not_to be_valid
       @product.errors.full_messages
     end
-    
 
   end
 end
