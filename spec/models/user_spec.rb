@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  before(:each) do
+    @user= User.new(name: "Jordan", email: "jordan.test@gmail.com", password: "testing", password_confirmation: "testing")
+  end
   
   describe "Validations" do
 
-    before(:each) do
-      @user= User.new(name: "Jordan", email: "jordan.test@gmail.com", password: "testing", password_confirmation: "testing")
-    end
 
     it "are valid with all attributes" do
       #Here we ensure that we can successfully save @product with all attributes expect it to be valid
@@ -38,9 +38,19 @@ RSpec.describe User, type: :model do
       expect(@user).not_to be_valid
     end
 
-  end
+    it "are not valid if password and password confirmation do not match" do
+      #Here we reassign the password confirmation from @user instance to a different password.
+      @user.password_confirmation = "A different password"
+      expect(@user.password).not_to eq(@user.password_confirmation)
+    end
 
-  describe 'Password' do
+    it "are valid if password and password do match" do
+      expect(@user.password).to eq(@user.password_confirmation)
+    end
+
+    
+
+
   end
 
 end
