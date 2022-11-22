@@ -101,6 +101,12 @@ RSpec.describe User, type: :model do
       login_result = User.authenticate_with_credentials('JoRdAN.TeST@gmail.com', 'testing')
       expect(login_result).not_to be_nil
     end
+
+    it "will pass even if inputted user email has white space before or after email" do
+      @user.save
+      login_result = User.authenticate_with_credentials('   jordan.test@gmail.com   ', 'testing')
+      expect(login_result).not_to be_nil
+    end
     
 
   end
