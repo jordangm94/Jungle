@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def self.authenticate_with_credentials(email, password)
-    #Use active recrod to locate a user via their email in DB
+    #Use active recrod to locate a user via their email in DB, turn email into all lowercase and STRIP all whitespace.
     user = User.find_by_email(email.downcase.strip)
     # IF user found and password authenticated, we return user
     if user && user.authenticate(password)
