@@ -7,7 +7,6 @@ RSpec.describe User, type: :model do
   
   describe "Validations" do
     
-
     it "are valid with all attributes" do
       #Here we ensure that we can successfully save @product with all attributes expect it to be valid
       @user.save
@@ -81,6 +80,28 @@ RSpec.describe User, type: :model do
     #   @user6.save 
     #   expect(@user6).to be_valid 
     # end
+
+  end
+
+  describe '.authenticate_with_credentials' do
+
+    it "will fail if user email is not found in the database" do
+      login_result = User.authenticate_with_credentials('randomemailforjungletest@gmail.com', 'testingpassword')
+      expect(login_result).to be_nil
+    end
+
+    it "will fail if user password is incorrect" do
+      @user.save
+      login_result = User.authenticate_with_credentials('jordan.test@gmail.com', 'testingggg')
+      expect(login_result).to be_nil
+    end
+
+    it "will pass if email is not case sensitive" do
+      @user.save
+      login_result = User.authenticate_with_credentials('JoRdAN.TeST@gmail.com', 'testing')
+      expect(login_result).not_to be_nil
+    end
+    
 
   end
 
