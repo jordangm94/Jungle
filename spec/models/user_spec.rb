@@ -44,37 +44,40 @@ RSpec.describe User, type: :model do
       expect(@user.password).not_to eq(@user.password_confirmation)
     end
 
-    it "are valid if password and password do match" do
-      expect(@user.password).to eq(@user.password_confirmation)
-    end
+    # Commented out because first validation should address this, will remove shortly
+    # it "are valid if password and password do match" do
+    #   expect(@user.password).to eq(@user.password_confirmation)
+    # end
 
     it "are not valid if email is not unique" do
-      @user2 = User.new(name: "Elena", email: "elena.test@gmail.com", password: "testing", password_confirmation: "testing")
-      @user2.save #Must ensure we save both users to database to properly simulate insertion of same email twice
-      @user3 = User.new(name: "Jenelle", email: "elena.test@gmail.com", password: "testing", password_confirmation: "testing")
-      @user3.save
+      @user = User.new(name: "Elena", email: "elena.test@gmail.com", password: "testing", password_confirmation: "testing")
+      @user.save #Must ensure we save both users to database to properly simulate insertion of same email twice
+      @user2 = User.new(name: "Jenelle", email: "elena.test@gmail.com", password: "testing", password_confirmation: "testing")
+      @user2.save
       #Check for error message specific email already being taken. Best way to ensure not valid. Much less generic than (@user3).should_not be_valid!
-      expect(@user3.errors.full_messages).to include("Email has already been taken")
+      expect(@user2.errors.full_messages).to include("Email has already been taken")
     end
 
-    it "are valid if email is unique" do
-      @user4 = User.new(name: "Julio", email: "julio.test@gmail.com", password: "testing", password_confirmation: "testing")
-      @user4.save 
-      expect(@user4).to be_valid
-    end
+    # Commented out because first validation should address this, will remove shortly
+    # it "are valid if email is unique" do
+    #   @user4 = User.new(name: "Julio", email: "julio.test@gmail.com", password: "testing", password_confirmation: "testing")
+    #   @user4.save 
+    #   expect(@user4).to be_valid
+    # end
 
     it "are not valid if password is not longer than 6 characters" do
-      @user5 = User.new(name: "Matthew", email: "matt.test@gmail.com", password: "test", password_confirmation: "test")
-      @user5.save 
-      expect(@user5).to_not be_valid
-      expect(@user5.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+      @user = User.new(name: "Matthew", email: "matt.test@gmail.com", password: "test", password_confirmation: "test")
+      @user.save 
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
     end
 
-    it "are valid if password is longer than 6 characters" do
-      @user6 = User.new(name: "Mike", email: "mike.test@gmail.com", password: "testing", password_confirmation: "testing")
-      @user6.save 
-      expect(@user6).to be_valid 
-    end
+    #  Commented out because first validation should address this, will remove shortly
+    # it "are valid if password is longer than 6 characters" do
+    #   @user6 = User.new(name: "Mike", email: "mike.test@gmail.com", password: "testing", password_confirmation: "testing")
+    #   @user6.save 
+    #   expect(@user6).to be_valid 
+    # end
 
   end
 
