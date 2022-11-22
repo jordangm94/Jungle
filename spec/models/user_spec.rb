@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
   describe "Validations" do
 
     before(:each) do
-      @user= User.new(name: "Jordan", email: "jordan.test@gmail.com", password_digest: "testing")
+      @user= User.new(name: "Jordan", email: "jordan.test@gmail.com", password: "testing", password_confirmation: "testing")
     end
 
     it "are valid with all attributes" do
@@ -26,7 +26,21 @@ RSpec.describe User, type: :model do
       expect(@user).not_to be_valid
     end
 
+    it "are not valid without a password" do
+      @user.password = nil
+      @user.errors.full_messages
+      expect(@user).not_to be_valid
+    end
 
+    it "are not valid without a password confirmation" do
+      @user.password_confirmation = nil
+      @user.errors.full_messages
+      expect(@user).not_to be_valid
+    end
 
   end
+
+  describe 'Password' do
+  end
+
 end
