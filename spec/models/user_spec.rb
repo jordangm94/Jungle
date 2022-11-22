@@ -54,8 +54,12 @@ RSpec.describe User, type: :model do
       @user.save #Must ensure we save both users to database to properly simulate insertion of same email twice
       @user2 = User.new(name: "Jenelle", email: "elena.test@gmail.com", password: "testing", password_confirmation: "testing")
       @user2.save
+      @user3 = User.new(name: "Jenelle", email: "ElEnA.TeSt@gmail.com", password: "testing", password_confirmation: "testing")
+      @user3.save
       #Check for error message specific email already being taken. Best way to ensure not valid. Much less generic than (@user3).should_not be_valid!
       expect(@user2.errors.full_messages).to include("Email has already been taken")
+      expect(@user3.errors.full_messages).to include("Email has already been taken")
+
     end
 
     # Commented out because first validation should address this, will remove shortly
