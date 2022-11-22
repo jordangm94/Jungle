@@ -5,9 +5,10 @@ class User < ApplicationRecord
   # This line of code gives our User model authentication methods via bcrypt
   has_secure_password
 
-  def authenticate_with_credentials(email, password)
+  def self.authenticate_with_credentials(email, password)
+    #Use active recrod to locate a user via their email in DB
     user = User.find_by_email(email)
-
+    # IF user found and password authenticated, we return user
     if user && user.authenticate(password)
       return user
     else
