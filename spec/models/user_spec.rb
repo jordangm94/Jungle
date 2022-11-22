@@ -59,7 +59,6 @@ RSpec.describe User, type: :model do
       #Check for error message specific email already being taken. Best way to ensure not valid. Much less generic than (@user3).should_not be_valid!
       expect(@user2.errors.full_messages).to include("Email has already been taken")
       expect(@user3.errors.full_messages).to include("Email has already been taken")
-
     end
 
     # Commented out because first validation should address this, will remove shortly

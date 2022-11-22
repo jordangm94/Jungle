@@ -5,6 +5,18 @@ class User < ApplicationRecord
   # This line of code gives our User model authentication methods via bcrypt
   has_secure_password
 
+  def authenticate_with_credentials(email, password)
+    user = User.find_by_email(email)
+
+    if user && user.authenticate(password)
+      return user
+    else
+      return nil
+    end
+
+  end
+
+  #Validations for users logging in or signing up
   validates :email, presence: true
   validates :email, uniqueness: { case_sensitive: false }
   validates :name, presence: true
