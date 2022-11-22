@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
   end
   
   describe "Validations" do
-
+    
 
     it "are valid with all attributes" do
       #Here we ensure that we can successfully save @product with all attributes expect it to be valid
@@ -48,7 +48,13 @@ RSpec.describe User, type: :model do
       expect(@user.password).to eq(@user.password_confirmation)
     end
 
-    
+    it "are not valid if email is not unique" do
+      @user2 = User.new(name: "Elena", email: "elena.test@gmail.com", password: "testing", password_confirmation: "testing")
+      @user2.save
+      @user3 = User.new(name: "Jenelle", email: "elena.test@gmail.com", password: "testing", password_confirmation: "testing")
+      @user3.save
+      expect(@user3.errors.full_messages).to include("Email has already been taken")
+    end
 
 
   end
