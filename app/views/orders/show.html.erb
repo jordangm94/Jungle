@@ -13,6 +13,11 @@
     </ol>
   </div>
 
+  <div>
+  Order email: <%= @order.email%><br>
+  You're Order total is <%= humanized_money_with_symbol @order.total_cents / 100%>. Thank you for shopping with us!
+  </div>
+
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
 </section>
