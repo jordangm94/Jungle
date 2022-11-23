@@ -1,6 +1,6 @@
 describe('Visiting Product Page', () => {
   
-  it("Navigating from home page to products details page", () => {
+  it("should be accesible by clicking on product on home page", () => {
     cy.visit('/')
     cy.get(".products article")
     .first()
