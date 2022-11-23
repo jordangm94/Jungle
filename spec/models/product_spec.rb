@@ -21,22 +21,22 @@ RSpec.describe Product, type: :model do
 
     it "are not valid without a title" do
       @product.name = nil
-      expect(@product).not_to be_valid
       @product.errors.full_messages
+      expect(@product).not_to be_valid
     end
     
 
     it "are not valid without a quantity" do
       @product.quantity = nil
-      expect(@product).not_to be_valid
       @product.errors.full_messages
+      expect(@product).not_to be_valid
     end
     
 
     it "are not valid without a category" do
       @product.category = nil
-      expect(@product).not_to be_valid
       @product.errors.full_messages
+      expect(@product).not_to be_valid
     end
 
   end
