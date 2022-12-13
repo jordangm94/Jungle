@@ -9,6 +9,19 @@ I was provided with pre built app in which I had to seek out and correct various
 * Adjusted the order show page so that it displays line items in order, image, name, description, respective quantities, final amount for order and the email that was used for the purchase.
 * Implemented admin security using http basic authentication for tasks (dashboard, product addition, category creation)
 
+## Final Product:
+
+### Home page
+
+!["Jungle landing page"](https://github.com/jordangm94/Jungle/blob/master/docs/Jungle-home.gif?raw=true)
+
+### Add Plant to Cart
+
+!["Add plant to cart then click on cart"](https://github.com/jordangm94/Jungle/blob/master/docs/Jungle-add-to-cart.gif?raw=true)
+
+### Create new plant category
+
+!["Create new plant category in Jungle"](https://github.com/jordangm94/Jungle/blob/master/docs/Jungle-new-category.gif?raw=true)
 
 ## Setup
 
